@@ -28,7 +28,7 @@ public class ArtistController {
     private final ArtistService artistService;
 
     @GetMapping(path = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Mono<ArtistDto>> getTrackById(
+    public ResponseEntity<Mono<ArtistDto>> getArtistById(
             @Length(min = ID_LENGTH, max = ID_LENGTH, message = "Artist ID must be " + ID_LENGTH + " characters")
 
             @PathVariable String id

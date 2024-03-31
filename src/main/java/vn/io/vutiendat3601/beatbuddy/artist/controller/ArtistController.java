@@ -38,7 +38,7 @@ public class ArtistController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Flux<ArtistDto>> getSeveralTracks(
+    public ResponseEntity<Flux<ArtistDto>> getSeveralArtists(
             @Size(min = 1, max = 50, message = "ids size must be between 1 and 50") @NotEmpty(message = "ids must not be empty")
 
             @RequestParam List<String> ids

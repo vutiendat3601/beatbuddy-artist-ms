@@ -8,3 +8,5 @@ spring:
     livereload:
       enabled: false
     add-properties: false
+  flyway:
+    baselineOnMigrate: true

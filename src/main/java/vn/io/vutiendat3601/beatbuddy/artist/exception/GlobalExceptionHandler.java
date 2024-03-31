@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
             ServerWebExchange exchange
 
     ) {
-        // log.error(e.getMessage(), e);
+        log.error("Internal server error: {}", e.getMessage());
         String apiPath = "" + exchange.getRequest().getPath();
         ErrorResponseDto errorRespDto = new ErrorResponseDto(
                 apiPath,

@@ -10,3 +10,13 @@ spring:
     add-properties: false
   flyway:
     baselineOnMigrate: true
+  web:
+    resources:
+      add-mappings: false
+springdoc:
+  api-docs:
+    enabled: true
+    path: /apidocs
+  swagger-ui:
+    enabled: true
+    path: /apidocs.html

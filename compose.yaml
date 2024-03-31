@@ -1,0 +1,20 @@
+name: beatbuddy
+
+services:
+  artist-ms:
+    image: docker.io/vutiendat3601/beatbuddy-artist-ms:latest
+    container_name: artist-ms
+    hostname: artist-ms
+    environment:
+      - SERVER_PORT=8040
+      - SPRING_PROFILES_ACTIVE=test
+      - SPRING_R2DBC_URL=r2dbc:postgresql://beatbuddy.io.vn:18040/beatbuddy_artist
+    ports:
+      - 8040:8040
+    networks:
+      - default
+
+networks:
+  default:
+    name: beatbuddy
+    driver: bridge

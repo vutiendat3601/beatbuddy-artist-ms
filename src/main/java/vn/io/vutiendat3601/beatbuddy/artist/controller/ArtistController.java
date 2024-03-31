@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import vn.io.vutiendat3601.beatbuddy.artist.dto.ArtistDto;
 import vn.io.vutiendat3601.beatbuddy.artist.service.ArtistService;
@@ -28,25 +27,29 @@ public class ArtistController {
     private final ArtistService artistService;
 
     @GetMapping(path = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Mono<ArtistDto>> getArtistById(
-            @Length(min = ID_LENGTH, max = ID_LENGTH, message = "Artist ID must be " + ID_LENGTH + " characters")
-
+    public Mono<ResponseEntity<ArtistDto>> getArtistById(
+            @Length(
+                min = ID_LENGTH, max = ID_LENGTH,
+                message = "Artist ID must be " + ID_LENGTH + " characters"
+            )
             @PathVariable String id
 
     ) {
-        return ResponseEntity.ok(artistService.getArtistById(id));
+        return artistService
+                .getArtistById(id)
+                .map(artistDto -> ResponseEntity.ok(artistDto));
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Flux<ArtistDto>> getSeveralArtists(
-            @Size(min = 1, max = 50, message = "ids size must be between 1 and 50") @NotEmpty(message = "ids must not be empty")
-
+    public Mono<ResponseEntity<List<ArtistDto>>> getSeveralArtists(
+            @Size(min = 1, max = 50, message = "ids size must be between 1 and 50")
+            @NotEmpty(message = "ids must not be empty")
             @RequestParam List<String> ids
 
     ) {
-        return ResponseEntity.ok(
-                artistService.getSeveralArtists(ids)
-
-        );
+        return artistService
+                .getSeveralArtists(ids)
+                .collectList()
+                .map(artistDtos -> ResponseEntity.ok(artistDtos));
     }
 }

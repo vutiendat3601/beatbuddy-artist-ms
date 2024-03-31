@@ -29,7 +29,11 @@ public class ArtistServiceImpl implements ArtistService {
 
     @Override
     public Flux<ArtistDto> getSeveralArtists(List<String> ids) {
-        return Flux.fromIterable(ids)
-                .flatMap(this::getArtistById);
+        return Flux
+                .fromIterable(ids)
+                .distinct()
+                .flatMap(this::getArtistById)
+                .onErrorContinue((e, o) -> {
+                });
     }
 }

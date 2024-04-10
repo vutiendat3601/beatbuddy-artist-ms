@@ -37,7 +37,7 @@ public class ArtistController {
     ) {
         return artistService
                 .getArtistById(id)
-                .map(artistDto -> ResponseEntity.ok(artistDto));
+                .map(ResponseEntity::ok);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,6 +50,6 @@ public class ArtistController {
         return artistService
                 .getSeveralArtists(ids)
                 .collectList()
-                .map(artistDtos -> ResponseEntity.ok(artistDtos));
+                .map(ResponseEntity::ok);
     }
 }

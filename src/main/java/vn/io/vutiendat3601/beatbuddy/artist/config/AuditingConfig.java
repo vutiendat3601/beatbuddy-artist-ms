@@ -1,11 +1,9 @@
 package vn.io.vutiendat3601.beatbuddy.artist.config;
 
-import static vn.io.vutiendat3601.beatbuddy.artist.util.UserContext.ANONYMOUS;
-import static vn.io.vutiendat3601.beatbuddy.artist.util.UserContext.AUTH_ID_HEADER;
 
 import java.time.ZonedDateTime;
 import java.util.Optional;
-
+import static vn.io.vutiendat3601.beatbuddy.artist.constant.HeaderConstant.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.auditing.DateTimeProvider;
@@ -17,10 +15,12 @@ import reactor.core.publisher.Mono;
 @Configuration
 @EnableR2dbcAuditing(auditorAwareRef = "authIdAuditAware", dateTimeProviderRef = "zoneDateTimeProvider")
 public class AuditingConfig {
+    private static final String ANONYMOUS = "_";
+    
     @Bean
     ReactiveAuditorAware<String> authIdAuditAware() {
         return () -> Mono.deferContextual(ctx -> Mono
-                .just(ctx.<String>getOrDefault(AUTH_ID_HEADER, ANONYMOUS))
+                .just(ctx.<String>getOrDefault(AUTH_ID, ANONYMOUS))
 
         );
     }

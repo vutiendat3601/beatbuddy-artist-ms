@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
 
     ) {
         log.error("Internal server error: {}", e.getMessage());
-        String apiPath = "" + exchange.getRequest().getPath();
+        String apiPath = exchange.getRequest().getPath().toString();
         ErrorResponseDto errorRespDto = new ErrorResponseDto(
                 apiPath,
                 HttpStatus.INTERNAL_SERVER_ERROR,
@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
 
     ) {
         log.error(e.getMessage());
-        String apiPath = "" + exchange.getRequest().getPath();
+        String apiPath = exchange.getRequest().getPath().toString();
         ErrorResponseDto errorRespDto = new ErrorResponseDto(
                 apiPath,
                 HttpStatus.NOT_FOUND,

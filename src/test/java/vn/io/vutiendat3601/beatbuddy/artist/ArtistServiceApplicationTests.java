@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles("dev")
+import vn.io.vutiendat3601.beatbuddy.artist.util.ProfilesResolver;
+
+@ActiveProfiles(resolver = ProfilesResolver.class)
 @SpringBootTest
 class ArtistServiceApplicationTests {
 	@Test

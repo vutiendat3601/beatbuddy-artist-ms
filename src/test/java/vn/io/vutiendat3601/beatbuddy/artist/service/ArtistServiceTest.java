@@ -8,8 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import reactor.test.StepVerifier;
+import vn.io.vutiendat3601.beatbuddy.artist.util.ProfilesResolver;
 
-@ActiveProfiles("dev")
+@ActiveProfiles(resolver = ProfilesResolver.class)
 @SpringBootTest
 public class ArtistServiceTest {
     @Test

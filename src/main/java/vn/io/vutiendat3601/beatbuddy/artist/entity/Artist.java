@@ -3,7 +3,9 @@ package vn.io.vutiendat3601.beatbuddy.artist.entity;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.UUID;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -11,59 +13,50 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.relational.core.mapping.Table;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table("artists")
 public final class Artist {
-    @Id
-    private UUID pkId;
+  @Id private UUID pkId;
 
-    private String id;
+  private String id;
 
-    private String urn;
+  private String urn;
 
-    private String name;
+  private String name;
 
-    private Boolean isVerified = false;
+  private Boolean isVerified = false;
 
-    private Boolean isPublic = false;
+  private Boolean isPublic = false;
 
-    private String realName;
+  private String realName;
 
-    private LocalDate birthDate;
+  private LocalDate birthDate;
 
-    private String description;
+  private String description;
 
-    private String nationality;
+  private String nationality;
 
-    private String biography;
+  private String biography;
 
-    private String thumbnail;
+  private String thumbnail;
 
-    private String background;
+  private String background;
 
-    private Long totalViews = 0L;
+  private Long totalViews = 0L;
 
-    private Long totalLikes = 0L;
+  private Long totalLikes = 0L;
 
-    private Long totalShares = 0L;
-    
-    private String refCode;
+  private Long totalShares = 0L;
 
-    @CreatedDate
-    protected ZonedDateTime createdAt;
+  private String refCode;
 
-    @LastModifiedDate
-    protected ZonedDateTime updatedAt;
+  @CreatedDate protected ZonedDateTime createdAt;
 
-    @CreatedBy
-    protected String createdBy;
+  @LastModifiedDate protected ZonedDateTime updatedAt;
 
-    @LastModifiedBy
-    protected String updatedBy;
+  @CreatedBy protected String createdBy;
+
+  @LastModifiedBy protected String updatedBy;
 }

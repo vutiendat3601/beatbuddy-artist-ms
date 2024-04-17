@@ -1,14 +1,24 @@
 server:
   port: 8040
+  compression:
+    enabled: true
   
 spring:
   application:
     name: artist
-  r2dbc:
-    url: r2dbc:postgresql://beatbuddy.io.vn:18000/beatbuddy_user
-    username: beatbuddy
-    password: 9258605ccdf074ea139bcb8f3a813d1a
   devtools:
     livereload:
       enabled: false
     add-properties: false
+  flyway:
+    baselineOnMigrate: true
+  web:
+    resources:
+      add-mappings: false
+springdoc:
+  api-docs:
+    enabled: true
+    path: /apidocs
+  swagger-ui:
+    enabled: true
+    path: /apidocs.html

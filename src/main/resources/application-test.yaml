@@ -1,9 +1,9 @@
 spring:
   r2dbc:
-    url: r2dbc:postgresql://localhost:18000/beatbuddy_user
+    url: r2dbc:postgresql://beatbuddy.io.vn:18040/beatbuddy_artist
     username: beatbuddy
     password: 9258605ccdf074ea139bcb8f3a813d1a
   flyway:
-    url: jdbc:postgresql://localhost:18000/beatbuddy_user
+    url: jdbc:postgresql://beatbuddy.io.vn:18040/beatbuddy_artist
     user: beatbuddy
     password: 9258605ccdf074ea139bcb8f3a813d1a
